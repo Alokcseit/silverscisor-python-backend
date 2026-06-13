@@ -1,39 +1,10 @@
-# silverscisor-python/services/face_analyzer.py
-
 import os
 import math
+import cv2
 import numpy as np
-import mediapipe as mp
-from mediapipe.tasks.python import vision
-from mediapipe.tasks.python.core import base_options as base_options_lib
-from typing import Optional
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FACE_LANDMARKER_MODEL = os.path.join(BASE_DIR, "assets", "models", "face_landmarker_v2.task")
-FACE_DETECTOR_MODEL = os.path.join(BASE_DIR, "assets", "models", "face_detection_short_range.tflite")
 
-# FaceMesh landmark indices for key facial features
-LM = {
-    "forehead_top": 10,
-    "chin_bottom": 152,
-    "left_temple": 103,
-    "right_temple": 332,
-    "left_cheek": 234,
-    "right_cheek": 454,
-    "left_jaw": 172,
-    "right_jaw": 397,
-    "chin_left": 175,
-    "chin_right": 395,
-    "nose_bridge_top": 168,
-    "nose_bridge_bottom": 6,
-    "left_eye_outer": 66,
-    "right_eye_outer": 296,
-    "left_eyebrow_center": 70,
-    "right_eyebrow_center": 300,
-}
-
-# Ideal ratio profiles for each face shape
-# Format: (length/width, forehead/cheek, jaw/cheek, forehead/jaw)
 SHAPE_PROFILES = {
     "Oval":     [1.35, 0.92, 0.82, 1.12],
     "Round":    [1.10, 0.95, 0.88, 1.08],
@@ -44,59 +15,104 @@ SHAPE_PROFILES = {
     "Triangle": [1.25, 0.85, 0.95, 0.89],
 }
 
-# Weights for each ratio in distance calculation
 RATIO_WEIGHTS = [0.35, 0.20, 0.25, 0.20]
 
 
 class FaceAnalyzer:
     def __init__(self):
-        base_opts_lm = base_options_lib.BaseOptions(model_asset_path=FACE_LANDMARKER_MODEL)
-        opts_lm = vision.FaceLandmarkerOptions(
-            base_options=base_opts_lm,
-            running_mode=vision.RunningMode.IMAGE,
-            num_faces=1,
-        )
-        self.face_landmarker = vision.FaceLandmarker.create_from_options(opts_lm)
-
-        base_opts_fd = base_options_lib.BaseOptions(model_asset_path=FACE_DETECTOR_MODEL)
-        opts_fd = vision.FaceDetectorOptions(
-            base_options=base_opts_fd,
-            running_mode=vision.RunningMode.IMAGE,
-            min_detection_confidence=0.5,
-        )
-        self.face_detector = vision.FaceDetector.create_from_options(opts_fd)
+        cascade_path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+        self.face_cascade = cv2.CascadeClassifier(cascade_path)
+        if self.face_cascade.empty():
+            print("[FaceAnalyzer] Failed to load Haar cascade")
 
     def detect_face(self, img_rgb: np.ndarray) -> bool:
-        mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=img_rgb)
-        result = self.face_detector.detect(mp_image)
-        return len(result.detections) > 0
+        gray = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY)
+        faces = self.face_cascade.detectMultiScale(gray, 1.1, 5, minSize=(100, 100))
+        return len(faces) > 0
 
-    def get_landmarks(self, img_rgb: np.ndarray) -> Optional[list]:
-        mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=img_rgb)
-        result = self.face_landmarker.detect(mp_image)
-        if not result.face_landmarks:
+    def _get_face_width_profile(self, gray_roi):
+        h, w = gray_roi.shape
+        if h < 20 or w < 20:
+            return {}
+
+        blurred = cv2.GaussianBlur(gray_roi, (5, 5), 0)
+        _, thresh = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+
+        contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        if not contours:
+            return {}
+
+        contour = max(contours, key=cv2.contourArea)
+        pts = contour[:, 0, :]
+
+        widths = {}
+        for pct in [0.10, 0.25, 0.30, 0.40, 0.50, 0.55, 0.60, 0.70, 0.75, 0.80, 0.85, 0.90]:
+            y_line = int(h * pct)
+            mask = np.abs(pts[:, 1] - y_line) < 3
+            line_pts = pts[mask]
+            if len(line_pts) > 1:
+                widths[pct] = (int(line_pts[:, 0].min()), int(line_pts[:, 0].max()))
+            else:
+                widths[pct] = (0, w)
+
+        return widths
+
+    def get_landmarks(self, img_rgb: np.ndarray):
+        gray = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2GRAY)
+        faces = self.face_cascade.detectMultiScale(gray, 1.1, 5, minSize=(100, 100))
+        if len(faces) == 0:
             return None
-        h, w = img_rgb.shape[:2]
-        points = [(int(lm.x * w), int(lm.y * h)) for lm in result.face_landmarks[0]]
-        return points
+
+        x, y, w, h = faces[0]
+
+        forehead_margin = int(h * 0.2)
+        y = max(0, y - forehead_margin)
+        h = min(gray.shape[0] - y, h + forehead_margin)
+
+        face_roi = gray[y:y+h, x:x+w]
+        widths = self._get_face_width_profile(face_roi)
+
+        cx = x + w // 2
+
+        def _w(pct):
+            l, r = widths.get(pct, (0, w))
+            return x + l, x + r
+
+        fw20_l, fw20_r = _w(0.20)
+        fw50_l, fw50_r = _w(0.50)
+        fw75_l, fw75_r = _w(0.75)
+        fw90_l, fw90_r = _w(0.90)
+
+        landmarks = {
+            "forehead_top":       (cx, y),
+            "chin_bottom":        (cx, y + h),
+            "left_temple":        (fw20_l, y + int(h * 0.20)),
+            "right_temple":       (fw20_r, y + int(h * 0.20)),
+            "left_cheek":         (fw50_l, y + int(h * 0.50)),
+            "right_cheek":        (fw50_r, y + int(h * 0.50)),
+            "left_jaw":           (fw75_l, y + int(h * 0.75)),
+            "right_jaw":          (fw75_r, y + int(h * 0.75)),
+            "chin_left":          (fw90_l, y + int(h * 0.90)),
+            "chin_right":         (fw90_r, y + int(h * 0.90)),
+            "nose_bridge_top":    (cx, y + int(h * 0.42)),
+            "nose_bridge_bottom": (cx, y + int(h * 0.52)),
+            "left_eye_outer":     (x + int(w * 0.22), y + int(h * 0.33)),
+            "right_eye_outer":    (x + int(w * 0.78), y + int(h * 0.33)),
+        }
+
+        return landmarks
 
     def _distance(self, p1, p2):
         return math.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)
 
-    def extract_face_measurements(self, landmarks: list):
-        """Extract precise face measurements from landmarks"""
-        pts = {}
-        for name, idx in LM.items():
-            pts[name] = landmarks[idx]
-
-        # Core distances
+    def extract_face_measurements(self, landmarks):
+        pts = landmarks
         face_length = self._distance(pts["forehead_top"], pts["chin_bottom"])
         forehead_width = self._distance(pts["left_temple"], pts["right_temple"])
         cheek_width = self._distance(pts["left_cheek"], pts["right_cheek"])
         jaw_width = self._distance(pts["left_jaw"], pts["right_jaw"])
         chin_width = self._distance(pts["chin_left"], pts["chin_right"])
 
-        # Derived ratios
         ratios = {
             "length_width": face_length / cheek_width if cheek_width else 1,
             "forehead_cheek": forehead_width / cheek_width if cheek_width else 1,
@@ -106,7 +122,6 @@ class FaceAnalyzer:
             "chin_cheek": chin_width / cheek_width if cheek_width else 1,
         }
 
-        # Feature descriptions
         features = {
             "jaw_type": self._classify_jaw(jaw_width, cheek_width, chin_width),
             "forehead_type": self._classify_forehead(forehead_width, cheek_width),
@@ -166,8 +181,7 @@ class FaceAnalyzer:
         else:
             return "Pointed"
 
-    def calculate_face_shape(self, landmarks: list) -> dict:
-        """Face shape classify using distance-weighted profile matching"""
+    def calculate_face_shape(self, landmarks: dict) -> dict:
         ratios, features, raw = self.extract_face_measurements(landmarks)
 
         actual = [
@@ -183,14 +197,12 @@ class FaceAnalyzer:
             for i in range(4):
                 diff = abs(actual[i] - ideal[i])
                 weight_dist += diff * RATIO_WEIGHTS[i]
-
             score = max(0, min(100, int((1.0 - weight_dist / 0.5) * 100)))
             results.append((shape_name, score, weight_dist))
 
         results.sort(key=lambda x: -x[1])
         best_shape, best_score, _ = results[0]
 
-        # If best score is very low, check stricter conditions
         if best_score < 30:
             lw = ratios["length_width"]
             if lw >= 1.5:
@@ -202,7 +214,6 @@ class FaceAnalyzer:
             elif ratios["forehead_jaw"] > 1.25:
                 best_shape = "Heart"
 
-        # Detailed features description
         jaw_desc = features["jaw_type"]
         forehead_desc = features["forehead_type"]
         cheek_desc = features["cheek_type"]
@@ -223,15 +234,12 @@ class FaceAnalyzer:
             "all_scores": {s: sc for s, sc, _ in results},
         }
 
-    def get_hair_length_estimate(self, landmarks: list, img_height: int) -> tuple:
-        """Hair length estimate with confidence"""
+    def get_hair_length_estimate(self, landmarks: dict, img_height: int) -> tuple:
         try:
-            forehead_top = landmarks[LM["forehead_top"]]
-            chin = landmarks[LM["chin_bottom"]]
-
+            forehead_top = landmarks["forehead_top"]
+            chin = landmarks["chin_bottom"]
             face_height = abs(chin[1] - forehead_top[1])
             top_margin = forehead_top[1]
-
             ratio = top_margin / face_height if face_height > 0 else 1
 
             if ratio < -0.3:
@@ -244,11 +252,10 @@ class FaceAnalyzer:
                 return "Short", 85
             else:
                 return "Very Short", 90
-        except IndexError:
+        except KeyError:
             return "Short", 50
 
     def analyze(self, img_rgb: np.ndarray) -> dict:
-        """Complete face analysis with detailed measurements"""
         h, w = img_rgb.shape[:2]
 
         has_face = self.detect_face(img_rgb)
@@ -257,8 +264,8 @@ class FaceAnalyzer:
             return {"success": False, "error": "No face detected"}
 
         landmarks = self.get_landmarks(img_rgb)
-        if landmarks is None or len(landmarks) < 478:
-            print(f"[FaceAnalyzer] Insufficient landmarks: {len(landmarks) if landmarks else 0}")
+        if landmarks is None:
+            print("[FaceAnalyzer] Could not compute facial landmarks")
             return {"success": False, "error": "Could not analyze face features"}
 
         face_result = self.calculate_face_shape(landmarks)
@@ -287,5 +294,4 @@ class FaceAnalyzer:
         }
 
 
-# Singleton
 face_analyzer = FaceAnalyzer()

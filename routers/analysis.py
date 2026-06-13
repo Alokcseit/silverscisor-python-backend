@@ -88,9 +88,5 @@ async def health_check():
         "success": True,
         "service": "Silverscisor AI Analysis Service",
         "status": "Running",
-        "models": {
-            "face_detection": "MediaPipe",
-            "face_mesh": "MediaPipe",
-            "skin_tone": "OpenCV + MediaPipe",
-        },
+        "face_analysis": "available",
     }
