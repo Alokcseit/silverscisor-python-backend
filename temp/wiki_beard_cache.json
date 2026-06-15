@@ -1,0 +1,533 @@
+{
+  "cached_at": "2026-06-16T00:56:06.560983",
+  "styles": [
+    {
+      "id": 1,
+      "name": "Chevron moustache",
+      "confidence": 90,
+      "description": "Chevron moustache hairstyle",
+      "price": 150,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 2,
+      "name": "Dali moustache",
+      "confidence": 89,
+      "description": "Dali moustache hairstyle",
+      "price": 180,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 3,
+      "name": "English moustache",
+      "confidence": 88,
+      "description": "English moustache hairstyle",
+      "price": 200,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 4,
+      "name": "Fu Manchu moustache",
+      "confidence": 87,
+      "description": "Fu Manchu moustache hairstyle",
+      "price": 220,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 5,
+      "name": "Handlebar moustache",
+      "confidence": 86,
+      "description": "Handlebar moustache hairstyle",
+      "price": 250,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 6,
+      "name": "Horseshoe moustache",
+      "confidence": 85,
+      "description": "Horseshoe moustache hairstyle",
+      "price": 280,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 7,
+      "name": "Hungarianmoustache",
+      "confidence": 84,
+      "description": "Hungarianmoustache hairstyle",
+      "price": 300,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 8,
+      "name": "Imperial moustache",
+      "confidence": 83,
+      "description": "Imperial moustache hairstyle",
+      "price": 350,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 9,
+      "name": "Lampshade moustache",
+      "confidence": 82,
+      "description": "Lampshade moustache hairstyle",
+      "price": 400,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 10,
+      "name": "Painter's brush",
+      "confidence": 81,
+      "description": "Painter's brush hairstyle",
+      "price": 150,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 11,
+      "name": "Pencil moustache",
+      "confidence": 80,
+      "description": "Pencil moustache hairstyle",
+      "price": 180,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 12,
+      "name": "Pornstache",
+      "confidence": 79,
+      "description": "Pornstache hairstyle",
+      "price": 200,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 13,
+      "name": "Pyramid moustache",
+      "confidence": 78,
+      "description": "Pyramid moustache hairstyle",
+      "price": 220,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 14,
+      "name": "Toothbrush moustache",
+      "confidence": 77,
+      "description": "Toothbrush moustache hairstyle",
+      "price": 250,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 15,
+      "name": "Walrus moustache",
+      "confidence": 76,
+      "description": "Walrus moustache hairstyle",
+      "price": 280,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 16,
+      "name": "Zapata moustache",
+      "confidence": 90,
+      "description": "Zapata moustache hairstyle",
+      "price": 300,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 17,
+      "name": "Ducktail",
+      "confidence": 89,
+      "description": "Ducktail hairstyle",
+      "price": 350,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 18,
+      "name": "Dwarven beard",
+      "confidence": 88,
+      "description": "Dwarven beard hairstyle",
+      "price": 400,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 19,
+      "name": "Forkbeard",
+      "confidence": 87,
+      "description": "Forkbeard hairstyle",
+      "price": 150,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 20,
+      "name": "Garibaldi beard",
+      "confidence": 86,
+      "description": "Garibaldi beard hairstyle",
+      "price": 180,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 21,
+      "name": "Hollywoodian",
+      "confidence": 85,
+      "description": "Hollywoodian hairstyle",
+      "price": 200,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 22,
+      "name": "Ned Kelly beard",
+      "confidence": 84,
+      "description": "Ned Kelly beard hairstyle",
+      "price": 220,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 23,
+      "name": "Verdi beard",
+      "confidence": 83,
+      "description": "Verdi beard hairstyle",
+      "price": 250,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 24,
+      "name": "Anchor beard",
+      "confidence": 82,
+      "description": "Anchor beard hairstyle",
+      "price": 280,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 25,
+      "name": "Balbo",
+      "confidence": 81,
+      "description": "Balbo hairstyle",
+      "price": 300,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 26,
+      "name": "Goatee",
+      "confidence": 80,
+      "description": "Goatee hairstyle",
+      "price": 350,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 27,
+      "name": "Goat patch",
+      "confidence": 79,
+      "description": "Goat patch hairstyle",
+      "price": 400,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 28,
+      "name": "Soul patch",
+      "confidence": 78,
+      "description": "Soul patch hairstyle",
+      "price": 150,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 29,
+      "name": "Van Dyke beard",
+      "confidence": 77,
+      "description": "Van Dyke beard hairstyle",
+      "price": 180,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 30,
+      "name": "TheZappa",
+      "confidence": 76,
+      "description": "TheZappa hairstyle",
+      "price": 200,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 31,
+      "name": "Chin curtain",
+      "confidence": 90,
+      "description": "Chin curtain hairstyle",
+      "price": 220,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 32,
+      "name": "Chinstrap beard",
+      "confidence": 89,
+      "description": "Chinstrap beard hairstyle",
+      "price": 250,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 33,
+      "name": "Circle beard",
+      "confidence": 88,
+      "description": "Circle beard hairstyle",
+      "price": 280,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 34,
+      "name": "Designer stubble(also called five o'clock shadow)",
+      "confidence": 87,
+      "description": "Designer stubble(also called five o'clock shadow) hairstyle",
+      "price": 300,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 35,
+      "name": "Friendly Mutton Chops",
+      "confidence": 86,
+      "description": "Friendly Mutton Chops hairstyle",
+      "price": 350,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 36,
+      "name": "Hulihee",
+      "confidence": 85,
+      "description": "Hulihee hairstyle",
+      "price": 400,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 37,
+      "name": "Monkey Tail",
+      "confidence": 84,
+      "description": "Monkey Tail hairstyle",
+      "price": 150,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 38,
+      "name": "Mutton chops",
+      "confidence": 83,
+      "description": "Mutton chops hairstyle",
+      "price": 180,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 39,
+      "name": "Neckbeard",
+      "confidence": 82,
+      "description": "Neckbeard hairstyle",
+      "price": 200,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 40,
+      "name": "Panini (also called Tiger stripe beard)",
+      "confidence": 81,
+      "description": "Panini (also called Tiger stripe beard) hairstyle",
+      "price": 220,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 41,
+      "name": "Shenandoah",
+      "confidence": 80,
+      "description": "Shenandoah hairstyle",
+      "price": 250,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 42,
+      "name": "Sideburns",
+      "confidence": 79,
+      "description": "Sideburns hairstyle",
+      "price": 280,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 43,
+      "name": "Sidewhiskers",
+      "confidence": 78,
+      "description": "Sidewhiskers hairstyle",
+      "price": 300,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 44,
+      "name": "Three pronged beard",
+      "confidence": 77,
+      "description": "Three pronged beard hairstyle",
+      "price": 350,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    }
+  ]
+}

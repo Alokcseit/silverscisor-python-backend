@@ -6,6 +6,7 @@ import base64
 import uuid
 import requests
 from tempfile import NamedTemporaryFile
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -72,20 +73,19 @@ def generate_style_image(
     gender_prefix = "man" if gender.lower() in ("male", "man", "") else "woman"
 
     prompts = {
-        "haircuts": f"A {gender_prefix} with {style_name} hairstyle, professional salon photo, well-groomed hair, detailed texture, studio lighting, photorealistic, high quality",
-        "beardStyles": f"A {gender_prefix} with {style_name}, well-maintained facial hair, professional grooming, studio lighting, photorealistic, high quality",
-        "hairColors": f"A {gender_prefix} with {style_name} hair color, natural looking, salon quality, studio lighting, photorealistic, high quality",
+        "haircuts": f"same person with {style_name} hairstyle, same face and features, only hair changed, photorealistic",
+        "beardStyles": f"same person with {style_name} facial hair, same face and features, only facial hair changed, photorealistic",
+        "hairColors": f"same person with {style_name} hair color, same face and features, only hair color changed, photorealistic",
     }
 
-    prompt = prompts.get(style_type, f"A {gender_prefix} with {style_name}, professional photo, high quality")
+    prompt = prompts.get(style_type, f"same person with {style_name}, same face and features, only style changed, photorealistic")
 
     try:
         # Save face image to temp file
         temp_path = _save_temp_image(face_image_b64)
 
         # Upload to Replicate
-        with open(temp_path, "rb") as f:
-            file_handle = replicate.files.upload(f)
+        file_handle = client.files.create(temp_path)
 
         # Use flux-dev with img2img
         model = HAIRCUT_MODEL
@@ -93,14 +93,14 @@ def generate_style_image(
             model,
             input={
                 "prompt": prompt,
-                "image": file_handle,
+                "image": file_handle.urls.get("get"),
                 "num_outputs": 1,
                 "guidance_scale": 3.5,
                 "num_inference_steps": 28,
-                "strength": 0.75,        # 0.0 = preserve original, 1.0 = completely new
+                "strength": 0.35,        # low = preserve face, only change hair
                 "aspect_ratio": "3:4",
-                "output_format": "jpg",
-                "output_quality": 85,
+                "output_format": "webp",
+                "output_quality": 90,
             },
         )
 
@@ -112,11 +112,34 @@ def generate_style_image(
 
         if output and len(output) > 0:
             url = str(output[0])
-            print(f"[ImageGen] Generated '{style_name}' → {url}")
+            print(f"[ImageGen] OK '{style_name}' -> {url}")
             return url
 
     except Exception as e:
-        print(f"[ImageGen] Error generating '{style_name}': {e}")
+        msg = str(e)
+        if "429" in msg or "throttled" in msg.lower():
+            import time
+            print(f"[ImageGen] Rate limited for '{style_name}', retrying in 10s...")
+            time.sleep(10)
+            try:
+                file_handle2 = client.files.create(temp_path)
+                output2 = client.run(
+                    model,
+                    input={
+                        "prompt": prompt,
+                        "image": file_handle2.urls.get("get"),
+                        "num_outputs": 1,
+                        "strength": 0.35,
+                    },
+                )
+                if output2 and len(output2) > 0:
+                    url = str(output2[0])
+                    print(f"[ImageGen] OK (retry) '{style_name}' -> {url}")
+                    return url
+            except Exception as e2:
+                print(f"[ImageGen] Retry also failed for '{style_name}': {e2}")
+        else:
+            print(f"[ImageGen] Error '{style_name}': {msg[:200]}")
 
     return None
 
@@ -125,21 +148,32 @@ def generate_multiple_styles(
     face_image_b64: str,
     styles: list[dict],
     gender: str = "",
+    max_workers: int = 1,
 ) -> list[dict]:
-    """Multiple styles generate karein (synchronous, sequential)"""
+    """Multiple styles generate karein (parallel with ThreadPoolExecutor)"""
     results = []
-    for style in styles:
-        url = generate_style_image(
-            face_image_b64=face_image_b64,
-            style_name=style["name"],
-            style_type=style["type"],
-            gender=gender,
-        )
-        results.append({
-            "id": style.get("id"),
-            "name": style["name"],
-            "type": style["type"],
-            "image_url": url,
-            "generated": url is not None,
-        })
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(
+                generate_style_image,
+                face_image_b64=face_image_b64,
+                style_name=style["name"],
+                style_type=style["type"],
+                gender=gender,
+            ): style
+            for style in styles
+        }
+        for future in as_completed(futures):
+            style = futures[future]
+            try:
+                url = future.result()
+            except Exception:
+                url = None
+            results.append({
+                "id": style.get("id"),
+                "name": style["name"],
+                "type": style["type"],
+                "image_url": url,
+                "generated": url is not None,
+            })
     return results

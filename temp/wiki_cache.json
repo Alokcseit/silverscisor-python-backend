@@ -1,0 +1,1253 @@
+{
+  "cached_at": "2026-06-16T00:56:01.374090",
+  "styles": [
+    {
+      "id": 1,
+      "name": "Bob cut",
+      "confidence": 90,
+      "description": "Bob cut hairstyle",
+      "price": 150,
+      "duration": "15 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 2,
+      "name": "Bouffant",
+      "confidence": 89,
+      "description": "Bouffant hairstyle",
+      "price": 180,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 3,
+      "name": "Bowl cut",
+      "confidence": 88,
+      "description": "Bowl cut hairstyle",
+      "price": 200,
+      "duration": "25 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 4,
+      "name": "Broccoli haircut",
+      "confidence": 87,
+      "description": "Broccoli haircut hairstyle",
+      "price": 220,
+      "duration": "30 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 5,
+      "name": "Bunches",
+      "confidence": 86,
+      "description": "Bunches hairstyle",
+      "price": 250,
+      "duration": "35 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 6,
+      "name": "Butch cut",
+      "confidence": 85,
+      "description": "Butch cut hairstyle",
+      "price": 280,
+      "duration": "40 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 7,
+      "name": "Buzz cut",
+      "confidence": 84,
+      "description": "Buzz cut hairstyle",
+      "price": 300,
+      "duration": "15 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 8,
+      "name": "Caesar cut",
+      "confidence": 83,
+      "description": "Caesar cut hairstyle",
+      "price": 350,
+      "duration": "20 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 9,
+      "name": "Chonmage",
+      "confidence": 82,
+      "description": "Chonmage hairstyle",
+      "price": 400,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 10,
+      "name": "Comb over",
+      "confidence": 81,
+      "description": "Comb over hairstyle",
+      "price": 150,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 11,
+      "name": "Conk",
+      "confidence": 80,
+      "description": "Conk hairstyle",
+      "price": 180,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 12,
+      "name": "Crew cut",
+      "confidence": 79,
+      "description": "Crew cut hairstyle",
+      "price": 200,
+      "duration": "40 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 13,
+      "name": "Curtained hair",
+      "confidence": 78,
+      "description": "Curtained hair hairstyle",
+      "price": 220,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 14,
+      "name": "Dido flip",
+      "confidence": 77,
+      "description": "Dido flip hairstyle",
+      "price": 250,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 15,
+      "name": "Ducktail",
+      "confidence": 76,
+      "description": "Ducktail hairstyle",
+      "price": 280,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 16,
+      "name": "Edgar cut",
+      "confidence": 90,
+      "description": "Edgar cut hairstyle",
+      "price": 300,
+      "duration": "30 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 17,
+      "name": "Eton crop",
+      "confidence": 89,
+      "description": "Eton crop hairstyle",
+      "price": 350,
+      "duration": "35 min",
+      "tags": [
+        "Modern",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 18,
+      "name": "Fauxhawk",
+      "confidence": 88,
+      "description": "Fauxhawk hairstyle",
+      "price": 400,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 19,
+      "name": "Flattop",
+      "confidence": 87,
+      "description": "Flattop hairstyle",
+      "price": 150,
+      "duration": "15 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 20,
+      "name": "French crop",
+      "confidence": 86,
+      "description": "French crop hairstyle",
+      "price": 180,
+      "duration": "20 min",
+      "tags": [
+        "Modern",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 21,
+      "name": "Frosted tips",
+      "confidence": 85,
+      "description": "Frosted tips hairstyle",
+      "price": 200,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 22,
+      "name": "Hi-top fade",
+      "confidence": 84,
+      "description": "Hi-top fade hairstyle",
+      "price": 220,
+      "duration": "30 min",
+      "tags": [
+        "Modern",
+        "Trending",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 23,
+      "name": "High and tight",
+      "confidence": 83,
+      "description": "High and tight hairstyle",
+      "price": 250,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 24,
+      "name": "Induction cut",
+      "confidence": 82,
+      "description": "Induction cut hairstyle",
+      "price": 280,
+      "duration": "40 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 25,
+      "name": "Ivy League",
+      "confidence": 81,
+      "description": "Ivy League hairstyle",
+      "price": 300,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 26,
+      "name": "Marcel waves",
+      "confidence": 80,
+      "description": "Marcel waves hairstyle",
+      "price": 350,
+      "duration": "20 min",
+      "tags": [
+        "Natural",
+        "Trending",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 27,
+      "name": "Mohawk",
+      "confidence": 79,
+      "description": "Mohawk hairstyle",
+      "price": 400,
+      "duration": "25 min",
+      "tags": [
+        "Bold",
+        "Trending",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 28,
+      "name": "Mop-Top",
+      "confidence": 78,
+      "description": "Mop-Top hairstyle",
+      "price": 150,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 29,
+      "name": "Pageboy",
+      "confidence": 77,
+      "description": "Pageboy hairstyle",
+      "price": 180,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 30,
+      "name": "Pixie cut",
+      "confidence": 76,
+      "description": "Pixie cut hairstyle",
+      "price": 200,
+      "duration": "40 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 31,
+      "name": "Pompadour",
+      "confidence": 90,
+      "description": "Pompadour hairstyle",
+      "price": 220,
+      "duration": "15 min",
+      "tags": [
+        "Trending",
+        "Bold",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 32,
+      "name": "Quiff",
+      "confidence": 89,
+      "description": "Quiff hairstyle",
+      "price": 250,
+      "duration": "20 min",
+      "tags": [
+        "Modern",
+        "Trending",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 33,
+      "name": "El Siete, or,El 7 Colombiano[3](The Seven)",
+      "confidence": 88,
+      "description": "El Siete, or,El 7 Colombiano[3](The Seven) hairstyle",
+      "price": 280,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 34,
+      "name": "Shape-up",
+      "confidence": 87,
+      "description": "Shape-up hairstyle",
+      "price": 300,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 35,
+      "name": "Skin fade",
+      "confidence": 86,
+      "description": "Skin fade hairstyle",
+      "price": 350,
+      "duration": "35 min",
+      "tags": [
+        "Modern",
+        "Trending",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 36,
+      "name": "Slicked-back",
+      "confidence": 85,
+      "description": "Slicked-back hairstyle",
+      "price": 400,
+      "duration": "40 min",
+      "tags": [
+        "Classic",
+        "Bold",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 37,
+      "name": "Titus cut",
+      "confidence": 84,
+      "description": "Titus cut hairstyle",
+      "price": 150,
+      "duration": "15 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 38,
+      "name": "Tonsure",
+      "confidence": 83,
+      "description": "Tonsure hairstyle",
+      "price": 180,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 39,
+      "name": "Two block",
+      "confidence": 82,
+      "description": "Two block hairstyle",
+      "price": 200,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 40,
+      "name": "Undercut",
+      "confidence": 81,
+      "description": "Undercut hairstyle",
+      "price": 220,
+      "duration": "30 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 41,
+      "name": "Waves",
+      "confidence": 80,
+      "description": "Waves hairstyle",
+      "price": 250,
+      "duration": "35 min",
+      "tags": [
+        "Natural",
+        "Trending",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 42,
+      "name": "Wings",
+      "confidence": 79,
+      "description": "Wings hairstyle",
+      "price": 280,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 43,
+      "name": "Afro",
+      "confidence": 78,
+      "description": "Afro hairstyle",
+      "price": 300,
+      "duration": "15 min",
+      "tags": [
+        "Natural",
+        "Bold",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 44,
+      "name": "Beehive",
+      "confidence": 77,
+      "description": "Beehive hairstyle",
+      "price": 350,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 45,
+      "name": "Bangs",
+      "confidence": 76,
+      "description": "Bangs hairstyle",
+      "price": 400,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 46,
+      "name": "Big hair",
+      "confidence": 90,
+      "description": "Big hair hairstyle",
+      "price": 150,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 47,
+      "name": "Blowout",
+      "confidence": 89,
+      "description": "Blowout hairstyle",
+      "price": 180,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 48,
+      "name": "Brush cut",
+      "confidence": 88,
+      "description": "Brush cut hairstyle",
+      "price": 200,
+      "duration": "40 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 49,
+      "name": "Bun",
+      "confidence": 87,
+      "description": "Bun hairstyle",
+      "price": 220,
+      "duration": "15 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 50,
+      "name": "Chignon",
+      "confidence": 86,
+      "description": "Chignon hairstyle",
+      "price": 250,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 51,
+      "name": "Croydon facelift",
+      "confidence": 85,
+      "description": "Croydon facelift hairstyle",
+      "price": 280,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 52,
+      "name": "Crown braid",
+      "confidence": 84,
+      "description": "Crown braid hairstyle",
+      "price": 300,
+      "duration": "30 min",
+      "tags": [
+        "Trending",
+        "Bold",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 53,
+      "name": "Double buns",
+      "confidence": 83,
+      "description": "Double buns hairstyle",
+      "price": 350,
+      "duration": "35 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 54,
+      "name": "Devilock",
+      "confidence": 82,
+      "description": "Devilock hairstyle",
+      "price": 400,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 55,
+      "name": "Fallera hairdo",
+      "confidence": 81,
+      "description": "Fallera hairdo hairstyle",
+      "price": 150,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 56,
+      "name": "Flipped-up ends",
+      "confidence": 80,
+      "description": "Flipped-up ends hairstyle",
+      "price": 180,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 57,
+      "name": "Feathered hair",
+      "confidence": 79,
+      "description": "Feathered hair hairstyle",
+      "price": 200,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 58,
+      "name": "Fontange",
+      "confidence": 78,
+      "description": "Fontange hairstyle",
+      "price": 220,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 59,
+      "name": "French braid",
+      "confidence": 77,
+      "description": "French braid hairstyle",
+      "price": 250,
+      "duration": "35 min",
+      "tags": [
+        "Trending",
+        "Bold",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 60,
+      "name": "French twist",
+      "confidence": 76,
+      "description": "French twist hairstyle",
+      "price": 280,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 61,
+      "name": "Fringe (bangs)",
+      "confidence": 90,
+      "description": "Fringe (bangs) hairstyle",
+      "price": 300,
+      "duration": "15 min",
+      "tags": [
+        "Modern",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 62,
+      "name": "Half crown",
+      "confidence": 89,
+      "description": "Half crown hairstyle",
+      "price": 350,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 63,
+      "name": "Half updo",
+      "confidence": 88,
+      "description": "Half updo hairstyle",
+      "price": 400,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 64,
+      "name": "Hime cut",
+      "confidence": 87,
+      "description": "Hime cut hairstyle",
+      "price": 150,
+      "duration": "30 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 65,
+      "name": "Jewfro",
+      "confidence": 86,
+      "description": "Jewfro hairstyle",
+      "price": 180,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 66,
+      "name": "Jheri curl",
+      "confidence": 85,
+      "description": "Jheri curl hairstyle",
+      "price": 200,
+      "duration": "40 min",
+      "tags": [
+        "Natural",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 67,
+      "name": "Layered hair",
+      "confidence": 84,
+      "description": "Layered hair hairstyle",
+      "price": 220,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 68,
+      "name": "Liberty spikes",
+      "confidence": 83,
+      "description": "Liberty spikes hairstyle",
+      "price": 250,
+      "duration": "20 min",
+      "tags": [
+        "Bold",
+        "Modern",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 69,
+      "name": "Lob",
+      "confidence": 82,
+      "description": "Lob hairstyle",
+      "price": 280,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 70,
+      "name": "Mullet",
+      "confidence": 81,
+      "description": "Mullet hairstyle",
+      "price": 300,
+      "duration": "30 min",
+      "tags": [
+        "Bold",
+        "Trending",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 71,
+      "name": "Odango",
+      "confidence": 80,
+      "description": "Odango hairstyle",
+      "price": 350,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 72,
+      "name": "Oseledets",
+      "confidence": 79,
+      "description": "Oseledets hairstyle",
+      "price": 400,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 73,
+      "name": "Payot",
+      "confidence": 78,
+      "description": "Payot hairstyle",
+      "price": 150,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 74,
+      "name": "Perm",
+      "confidence": 77,
+      "description": "Perm hairstyle",
+      "price": 180,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 75,
+      "name": "Pigtails",
+      "confidence": 76,
+      "description": "Pigtails hairstyle",
+      "price": 200,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 76,
+      "name": "Ponyhawk",
+      "confidence": 90,
+      "description": "Ponyhawk hairstyle",
+      "price": 220,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 77,
+      "name": "Ponytail",
+      "confidence": 89,
+      "description": "Ponytail hairstyle",
+      "price": 250,
+      "duration": "35 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 78,
+      "name": "Psychobilly Wedge",
+      "confidence": 88,
+      "description": "Psychobilly Wedge hairstyle",
+      "price": 280,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 79,
+      "name": "Queue",
+      "confidence": 87,
+      "description": "Queue hairstyle",
+      "price": 300,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 80,
+      "name": "The Rachel",
+      "confidence": 86,
+      "description": "The Rachel hairstyle",
+      "price": 350,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 81,
+      "name": "Rattail",
+      "confidence": 85,
+      "description": "Rattail hairstyle",
+      "price": 400,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 82,
+      "name": "Razor cut",
+      "confidence": 84,
+      "description": "Razor cut hairstyle",
+      "price": 150,
+      "duration": "30 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 83,
+      "name": "Ringlets",
+      "confidence": 83,
+      "description": "Ringlets hairstyle",
+      "price": 180,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 84,
+      "name": "Shag cut",
+      "confidence": 82,
+      "description": "Shag cut hairstyle",
+      "price": 200,
+      "duration": "40 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 85,
+      "name": "Shingle bob",
+      "confidence": 81,
+      "description": "Shingle bob hairstyle",
+      "price": 220,
+      "duration": "15 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 86,
+      "name": "Step cut",
+      "confidence": 80,
+      "description": "Step cut hairstyle",
+      "price": 250,
+      "duration": "20 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 87,
+      "name": "Surfer hair",
+      "confidence": 79,
+      "description": "Surfer hair hairstyle",
+      "price": 280,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 88,
+      "name": "Tail on back",
+      "confidence": 78,
+      "description": "Tail on back hairstyle",
+      "price": 300,
+      "duration": "30 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 89,
+      "name": "Updo",
+      "confidence": 77,
+      "description": "Updo hairstyle",
+      "price": 350,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 90,
+      "name": "Weave",
+      "confidence": 76,
+      "description": "Weave hairstyle",
+      "price": 400,
+      "duration": "40 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 91,
+      "name": "Asymmetric cut",
+      "confidence": 90,
+      "description": "Asymmetric cut hairstyle",
+      "price": 150,
+      "duration": "15 min",
+      "tags": [
+        "Classic",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 92,
+      "name": "Braid or Plait",
+      "confidence": 89,
+      "description": "Braid or Plait hairstyle",
+      "price": 180,
+      "duration": "20 min",
+      "tags": [
+        "Trending",
+        "Bold",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 93,
+      "name": "Cornrows",
+      "confidence": 88,
+      "description": "Cornrows hairstyle",
+      "price": 200,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 94,
+      "name": "Dreadlocks",
+      "confidence": 87,
+      "description": "Dreadlocks hairstyle",
+      "price": 220,
+      "duration": "30 min",
+      "tags": [
+        "Bold",
+        "Natural",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 95,
+      "name": "Extensions",
+      "confidence": 86,
+      "description": "Extensions hairstyle",
+      "price": 250,
+      "duration": "35 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 96,
+      "name": "Finger waves",
+      "confidence": 85,
+      "description": "Finger waves hairstyle",
+      "price": 280,
+      "duration": "40 min",
+      "tags": [
+        "Natural",
+        "Trending",
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 97,
+      "name": "Fishtail hair",
+      "confidence": 84,
+      "description": "Fishtail hair hairstyle",
+      "price": 300,
+      "duration": "15 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 98,
+      "name": "Highlights",
+      "confidence": 83,
+      "description": "Highlights hairstyle",
+      "price": 350,
+      "duration": "20 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    },
+    {
+      "id": 99,
+      "name": "\"Natural\" (African)",
+      "confidence": 82,
+      "description": "\"Natural\" (African) hairstyle",
+      "price": 400,
+      "duration": "25 min",
+      "tags": [
+        "Popular"
+      ],
+      "image": null
+    }
+  ]
+}

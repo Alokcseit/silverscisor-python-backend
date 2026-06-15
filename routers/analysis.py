@@ -68,9 +68,9 @@ async def analyze_face(request: AnalysisRequest):
                 "undertone": undertone,
                 "currentHairLength": hair_length,
                 "recommendations": {
-                    "haircuts": haircuts[:3],
-                    "beardStyles": beards[:2],
-                    "hairColors": colors[:3],
+                    "haircuts": haircuts[:20],
+                    "beardStyles": beards[:15],
+                    "hairColors": colors[:10],
                 },
             },
         )

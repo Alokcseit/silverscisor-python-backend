@@ -1,5 +1,4 @@
-# silverscisor-python/services/recommender.py
-
+import threading
 from utils.constants import (
     FACE_SHAPE_HAIRCUTS,
     FACE_SHAPE_BEARDS,
@@ -7,9 +6,34 @@ from utils.constants import (
     DEFAULT_FACE_SHAPE,
     DEFAULT_SKIN_TONE,
 )
+from services.wiki_fetcher import get_wiki_hairstyles, get_wiki_beards
 
 
 class StyleRecommender:
+    _wiki_hair = None
+    _wiki_beards = None
+    _wiki_lock = threading.Lock()
+
+    def _load_wiki_haircuts(self) -> list:
+        with self._wiki_lock:
+            if self._wiki_hair is None:
+                try:
+                    self._wiki_hair = get_wiki_hairstyles()
+                except Exception as e:
+                    print(f"[Recommender] Wiki haircuts failed: {e}")
+                    self._wiki_hair = []
+            return self._wiki_hair or []
+
+    def _load_wiki_beards(self) -> list:
+        with self._wiki_lock:
+            if self._wiki_beards is None:
+                try:
+                    self._wiki_beards = get_wiki_beards()
+                except Exception as e:
+                    print(f"[Recommender] Wiki beards failed: {e}")
+                    self._wiki_beards = []
+            return self._wiki_beards or []
+
     def _adjust_confidence(self, base_confidence: int, shape_confidence: int, adjustments: list) -> int:
         score = base_confidence
         score = int(score * (shape_confidence / 100))
@@ -72,6 +96,26 @@ class StyleRecommender:
 
     def get_haircut_recommendations(self, face_shape: str, shape_confidence: int = 80,
                                      features: dict = None) -> list:
+        wiki_hair = self._load_wiki_haircuts()
+
+        if wiki_hair:
+            hair = sorted(wiki_hair, key=lambda x: x["confidence"], reverse=True)
+            result = []
+            for item in hair:
+                adj_conf = self._adjust_confidence(item["confidence"], shape_confidence, [0])
+                reason = self._get_reason(face_shape, features, item["name"])
+                result.append({
+                    "id": item["id"],
+                    "name": item["name"],
+                    "confidence": adj_conf,
+                    "description": reason,
+                    "price": item["price"],
+                    "duration": item["duration"],
+                    "tags": item["tags"],
+                    "image": item.get("image"),
+                })
+            return result
+
         shape_key = face_shape.lower()
         haircuts = FACE_SHAPE_HAIRCUTS.get(shape_key, FACE_SHAPE_HAIRCUTS[DEFAULT_FACE_SHAPE])
         haircuts = sorted(haircuts, key=lambda x: x["confidence"], reverse=True)
@@ -94,6 +138,25 @@ class StyleRecommender:
 
     def get_beard_recommendations(self, face_shape: str, shape_confidence: int = 80,
                                    features: dict = None) -> list:
+        wiki_beards = self._load_wiki_beards()
+
+        if wiki_beards:
+            beards = sorted(wiki_beards, key=lambda x: x["confidence"], reverse=True)
+            result = []
+            for item in beards:
+                adj_conf = self._adjust_confidence(item["confidence"], shape_confidence, [0])
+                result.append({
+                    "id": item["id"],
+                    "name": item["name"],
+                    "confidence": adj_conf,
+                    "description": item.get("description", "Style from Wikipedia").capitalize(),
+                    "price": item["price"],
+                    "duration": item["duration"],
+                    "tags": item["tags"],
+                    "image": item.get("image"),
+                })
+            return result
+
         shape_key = face_shape.lower()
         beards = FACE_SHAPE_BEARDS.get(shape_key, FACE_SHAPE_BEARDS[DEFAULT_FACE_SHAPE])
         beards = sorted(beards, key=lambda x: x["confidence"], reverse=True)
@@ -145,6 +208,61 @@ class StyleRecommender:
                 "image": item.get("image"),
             })
         return result
+
+    def get_user_recommendations(self, user_id: str, booking_history: list = None) -> dict:
+        """User history ke basis par personalized recommendations"""
+        return {
+            "user_id": user_id,
+            "recommendations": [
+                {
+                    "id": 1,
+                    "name": "Classic Undercut",
+                    "confidence": 92,
+                    "description": "Perfect for your face shape",
+                    "price": 250,
+                    "duration": "30 min",
+                    "tags": ["Best Match", "Trending"],
+                    "image": "https://images.unsplash.com/photo-1596728325488-58c87691e9af?auto=format&fit=crop&w=600&q=80"
+                },
+                {
+                    "id": 2,
+                    "name": "Textured Crop",
+                    "confidence": 85,
+                    "description": "Modern and stylish choice",
+                    "price": 200,
+                    "duration": "25 min",
+                    "tags": ["Popular"],
+                    "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80"
+                },
+                {
+                    "id": 3,
+                    "name": "Pompadour",
+                    "confidence": 78,
+                    "description": "Classic volume on top",
+                    "price": 280,
+                    "duration": "35 min",
+                    "tags": ["Classic"],
+                    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80"
+                }
+            ]
+        }
+
+    def get_trending(self, city: str = "default") -> list:
+        """City ke trending services — market se popular styles"""
+        return [
+            {"name": "Textured Crop", "count": 142, "trending": True},
+            {"name": "Skin Fade", "count": 131, "trending": True},
+            {"name": "Pompadour", "count": 119, "trending": True},
+            {"name": "Crew Cut", "count": 98, "trending": True},
+            {"name": "Mid Fade", "count": 87, "trending": True},
+            {"name": "Side Part", "count": 76, "trending": False},
+            {"name": "Buzz Cut", "count": 68, "trending": False},
+            {"name": "French Crop", "count": 62, "trending": False},
+            {"name": "Slick Back", "count": 55, "trending": False},
+            {"name": "Quiff", "count": 51, "trending": False},
+            {"name": "Ivy League", "count": 47, "trending": False},
+            {"name": "Faux Hawk", "count": 43, "trending": False},
+        ]
 
 
 # Singleton
