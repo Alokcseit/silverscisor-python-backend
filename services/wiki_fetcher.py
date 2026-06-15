@@ -5,8 +5,8 @@ import requests
 from html.parser import HTMLParser
 from datetime import datetime, timedelta
 
-CACHE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "temp", "wiki_cache.json")
-BEARD_CACHE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "temp", "wiki_beard_cache.json")
+CACHE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "wiki_cache.json")
+BEARD_CACHE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "wiki_beard_cache.json")
 CACHE_DURATION = timedelta(hours=24)
 
 

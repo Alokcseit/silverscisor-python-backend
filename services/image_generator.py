@@ -3,9 +3,8 @@
 import os
 import io
 import base64
-import uuid
+import tempfile
 import requests
-from tempfile import NamedTemporaryFile
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dotenv import load_dotenv
 
@@ -43,12 +42,10 @@ def _save_temp_image(image_b64: str) -> str:
     if "," in image_b64:
         image_b64 = image_b64.split(",")[1]
     img_bytes = base64.b64decode(image_b64)
-    path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "temp")
-    os.makedirs(path, exist_ok=True)
-    filepath = os.path.join(path, f"face_{uuid.uuid4().hex}.jpg")
-    with open(filepath, "wb") as f:
-        f.write(img_bytes)
-    return filepath
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".jpg")
+    tmp.write(img_bytes)
+    tmp.close()
+    return tmp.name
 
 
 def generate_style_image(
